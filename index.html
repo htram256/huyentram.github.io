@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trực quan hóa dữ liệu với D3.js</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="preload ">
+        <div class="spinner"></div>
+    </div>
+    <h1>Trực quan hóa dữ liệu với D3.js</h1>
+    <div class="title-tab">
+        <div class="tabs">
+            <div class="tab" onclick="showTab(1)">Q1</div>
+            <div class="tab" onclick="showTab(2)">Q2</div>
+            <div class="tab" onclick="showTab(3)">Q3</div>
+            <div class="tab" onclick="showTab(4)">Q4</div>
+            <div class="tab" onclick="showTab(5)">Q5</div>
+            <div class="tab" onclick="showTab(6)">Q6</div>
+            <div class="tab" onclick="showTab(7)">Q7</div>
+            <div class="tab" onclick="showTab(8)">Q8</div>
+            <div class="tab" onclick="showTab(9)">Q9</div>
+            <div class="tab" onclick="showTab(10)">Q10</div>
+            <div class="tab" onclick="showTab(11)">Q11</div>
+            <div class="tab" onclick="showTab(12)">Q12</div>
+        </div>
+    </div>
+
+    <div id="Content1" class="tab-content">
+        <h2>Doanh số bán hàng theo Mặt hàng</h2>
+        <div id="Q1"></div>
+    </div>
+    <div id="Content2" class="tab-content">
+        <h2>Doanh số bán hàng theo Nhóm hàng</h2>
+        <div id="Q2"></div>
+    </div>
+    <div id="Content3" class="tab-content">
+        <h2>Doanh số bán hàng theo Tháng</h2>
+        <div id="Q3"></div>
+    </div>
+    <div id="Content4" class="tab-content">
+        <h2>Doanh số bán hàng trung bình theo Ngày trong tuần</h2>
+        <div id="Q4"></div>
+    </div>
+    <div id="Content5" class="tab-content">
+        <h2>Doanh số bán hàng trung bình theo Ngày trong tháng</h2>
+        <div id="Q5"></div>
+    </div>
+    <div id="Content6" class="tab-content">
+        <h2>Doanh số bán hàng trung bình theo Khung giờ</h2>
+        <div id="Q6"></div>
+    </div>
+    <div id="Content7" class="tab-content">
+        <h2>Xác suất bán hàng theo Nhóm hàng</h2>
+        <div id="Q7"></div>
+    </div>
+    <div id="Content8" class="tab-content">
+        <h2>Xác suất bán hàng của Nhóm hàng theo Tháng</h2>
+        <div id="Q8"></div>
+    </div>
+    <div id="Content9" class="tab-content">
+        <h2>Xác suất bán hàng của Mặt hàng theo Nhóm hàng</h2>
+        <div id="Q9"></div>
+    </div>
+    <div id="Content10" class="tab-content">
+        <h2>Xác suất bán hàng của Mặt hàng theo Nhóm hàng trong từng Tháng</h2>
+        <div id="Q10"></div>
+    </div>
+    <div id="Content11" class="tab-content">
+        <h2>Phân phối Lượt mua hàng</h2>
+        <div id="Q11"></div>
+    </div>
+    <div id="Content12" class="tab-content">
+        <h2>Phân phối mức chi trả của Khách hàng</h2>
+        <div id="Q12"></div>
+    </div>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="data.js"></script>
+    <script src="main.js"></script>
+
+    <script>
+        function showTab(tabIndex) {
+            var tabs = document.querySelectorAll('.tab');
+            tabs.forEach(function(tab) {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab')[tabIndex - 1].classList.add('active');
+
+            var contents = document.querySelectorAll('.tab-content');
+            contents.forEach(function(content) {
+                content.classList.remove('active');
+            });
+            document.getElementById('Content' + tabIndex).classList.add('active');
+        }
+
+        showTab(1);
+
+        window.addEventListener('load', function() {
+            const preloadElement = document.querySelector('.preload');
+            if (preloadElement) {
+                preloadElement.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
